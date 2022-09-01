@@ -20,10 +20,12 @@ except:
     already_done = set([])
 parcelnumbers = set(parcelnumbers - already_done)
 
-Output_Handle = open(OUTPUT_FILE, 'a')
 if not os.path.exists(OUTPUT_FILE):
+    Output_Handle = open(OUTPUT_FILE, 'a')
     Output_Handle.write('ParcelID,Taxes2021,Taxes2020,Taxes2019,Taxes2018,Taxes2017,Taxes2016,Taxes2015,Mortgage Company,Mortgage.Service Co Name\n')
     Output_Handle.flush()
+else:
+    Output_Handle = open(OUTPUT_FILE, 'a')
 
 Progress_Handle = open("progress.txt", 'a')
 Exception_Handle = open("error.txt", 'a')
