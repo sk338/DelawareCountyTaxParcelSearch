@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup as soup
 import random
 import time
+import os
 from datetime import datetime
 from queue import Queue
 from threading import Thread, Lock
@@ -20,9 +21,9 @@ except:
 parcelnumbers = set(parcelnumbers - already_done)
 
 Output_Handle = open(OUTPUT_FILE, 'a')
-if not already_done:
+if not os.path.exists(OUTPUT_FILE):
     Output_Handle.write('ParcelID,Taxes2021,Taxes2020,Taxes2019,Taxes2018,Taxes2017,Taxes2016,Taxes2015,Mortgage Company,Mortgage.Service Co Name\n')
-Output_Handle.flush()
+    Output_Handle.flush()
 
 Progress_Handle = open("progress.txt", 'a')
 Exception_Handle = open("error.txt", 'a')
