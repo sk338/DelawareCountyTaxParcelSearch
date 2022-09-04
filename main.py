@@ -1,9 +1,9 @@
 import requests
 from bs4 import BeautifulSoup as soup
-import random
+from datetime import datetime
 import time
 import os
-from datetime import datetime
+import random
 from queue import Queue
 from threading import Thread, Lock
 
