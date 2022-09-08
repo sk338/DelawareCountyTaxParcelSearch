@@ -182,30 +182,32 @@ class Check(Thread):
                                         except Exception as e:
                                             pass
                                             # print(f'Tax details not found for parcel ID: {parcel_number}')
-                                    # print(tempList)
                                 except Exception as e:
                                     for _ in range(1, 8):
                                         tempList.append(["", ""])
+                                # print(tempList)
 
-                                for i, data in enumerate(tempList, start=1):
-                                    if i > 7:
+                                for i in range(0, 7):
+                                    if i > 6:
                                         break
-
-                                    if data[0] == '2021':
-                                        DelinquentTaxes.append(data[1])
-                                    elif data[0] == '2020':
-                                        DelinquentTaxes.append(data[1])
-                                    elif data[0] == '2019':
-                                        DelinquentTaxes.append(data[1])
-                                    elif data[0] == '2018':
-                                        DelinquentTaxes.append(data[1])
-                                    elif data[0] == '2017':
-                                        DelinquentTaxes.append(data[1])
-                                    elif data[0] == '2016':
-                                        DelinquentTaxes.append(data[1])
-                                    elif data[0] == '2015':
-                                        DelinquentTaxes.append(data[1])
-                                    else:
+                                    try:
+                                        if tempList[i][0] == '2021':
+                                            DelinquentTaxes.append(tempList[i][1])
+                                        elif tempList[i][0] == '2020':
+                                            DelinquentTaxes.append(tempList[i][1])
+                                        elif tempList[i][0] == '2019':
+                                            DelinquentTaxes.append(tempList[i][1])
+                                        elif tempList[i][0] == '2018':
+                                            DelinquentTaxes.append(tempList[i][1])
+                                        elif tempList[i][0] == '2017':
+                                            DelinquentTaxes.append(tempList[i][1])
+                                        elif tempList[i][0] == '2016':
+                                            DelinquentTaxes.append(tempList[i][1])
+                                        elif tempList[i][0] == '2015':
+                                            DelinquentTaxes.append(tempList[i][1])
+                                        else:
+                                            DelinquentTaxes.append('')
+                                    except:
                                         DelinquentTaxes.append('')
 
                                 final_data = [parcel_number, *DelinquentTaxes, *MortgageCompany, *MortgageService]
