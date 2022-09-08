@@ -5,13 +5,13 @@ import time
 import os
 import random
 from queue import Queue
-from threading import Thread, Lock
+from threading import Thread
 
 URL = 'http://delcorealestate.co.delaware.pa.us/pt/Search/Disclaimer.aspx?FromUrl=../search/commonsearch.aspx?mode=parid'
 INPUT_FILE = 'ParcelNumbers.csv'
 OUTPUT_FILE = f'DelawareCountyTaxDetails_{datetime.now().strftime("%m_%d_%Y")}.csv'
 
-lock = Lock()
+
 useragents = [account.rstrip() for account in open("useragents.txt").readlines()]
 parcelnumbers = set([f.replace('\n', '').replace('-', '').strip() for f in open(INPUT_FILE).readlines()][1:])
 try:
